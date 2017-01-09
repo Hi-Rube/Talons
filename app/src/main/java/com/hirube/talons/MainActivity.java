@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 public class MainActivity extends ActionBarActivity {
+
+    private NetSettingDialog netSettingDialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,19 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_net_setting) {
+
+            if (netSettingDialog == null){
+                netSettingDialog = new NetSettingDialog(this) {
+                    @Override
+                    public void onConfirmNetAddress(String netAddress) {
+
+                    }
+                };
+                netSettingDialog.create();
+            }
+
+            netSettingDialog.show();
             return true;
         }
 

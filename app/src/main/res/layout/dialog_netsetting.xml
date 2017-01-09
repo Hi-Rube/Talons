@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/dialog_netsetting_netinput"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+    <Button
+        android:id="@+id/dialog_netsetting_okbtn"
+        android:text="ok"
+        android:background="@color/base_color"
+        android:textColor="@color/base_text_color"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+</LinearLayout>

@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">Talons</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Talons</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- menu 设置 -->
+    <string name="action_net_setting">网络设置</string>
 </resources>
