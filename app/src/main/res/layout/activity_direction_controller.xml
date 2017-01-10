@@ -4,14 +4,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.hirube.talons.MainActivity">
+    tools:context="com.hirube.talons.DirectionController">
 
-    <Button
-        android:id="@+id/btn_direction_controller_activity_main"
-        android:text="方向控制"
-        android:textColor="@color/base_text_color"
-        android:background="@color/base_color"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp" />
+    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

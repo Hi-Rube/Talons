@@ -1,18 +1,37 @@
 package com.hirube.talons;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
     private NetSettingDialog netSettingDialog = null;
 
+    //设置的值
+    private String netAddress = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnDirectionController = (Button) this.findViewById(R.id.btn_direction_controller_activity_main);
+        btnDirectionController.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toDirectionController = new Intent(MainActivity.this, DirectionController.class);
+                Bundle params = new Bundle();
+                params.putString("netAddress", netAddress);
+                toDirectionController.putExtra("params", params);
+                startActivity(toDirectionController);
+            }
+        });
     }
 
 
@@ -36,8 +55,8 @@ public class MainActivity extends ActionBarActivity {
             if (netSettingDialog == null){
                 netSettingDialog = new NetSettingDialog(this) {
                     @Override
-                    public void onConfirmNetAddress(String netAddress) {
-
+                    public void onConfirmNetAddress(String _netAddress) {
+                        netAddress = _netAddress;
                     }
                 };
                 netSettingDialog.create();

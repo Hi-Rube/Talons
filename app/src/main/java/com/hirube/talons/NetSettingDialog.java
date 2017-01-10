@@ -47,7 +47,7 @@ public abstract class NetSettingDialog extends Dialog {
     @Override
     public void show(){
         netInput.setText(netAddress);
-        this.show();
+        super.show();
     }
 
     private void dealConfirmNetAddress(){
