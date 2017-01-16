@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btn_direction_controller_activity_main"
-        android:text="方向控制"
+        android:text="方向盘"
         android:textColor="@color/base_text_color"
         android:background="@color/base_color"
         android:layout_width="fill_parent"

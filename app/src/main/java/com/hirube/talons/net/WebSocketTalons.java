@@ -12,27 +12,33 @@ import de.tavendo.autobahn.WebSocketHandler;
 public class WebSocketTalons {
 
     private static WebSocketTalons talons = null;
-    private static String netAddress;
+    private static String netAddress = "";
 
-    public static void setNetAddress(String netAddress){
-        if (!WebSocketTalons.netAddress.equals(netAddress)){
-            WebSocketTalons.netAddress = netAddress;
-            talons = new WebSocketTalons(netAddress);
+    public static WebSocketTalons get(String _netAddress, boolean isRefresh){
+
+        if (isRefresh){
+            talons = new WebSocketTalons(_netAddress);
+            netAddress = _netAddress;
+            return talons;
+        } else {
+            return WebSocketTalons.get(_netAddress);
         }
     }
+    public static WebSocketTalons get(String _netAddress){
 
-    public static void create(){
-        if (talons == null){
-            talons = new WebSocketTalons();
+        if (!_netAddress.equals(netAddress)){
+            talons = new WebSocketTalons(_netAddress);
+        } else if (talons == null){
+            talons = new WebSocketTalons(netAddress);
         }
+        netAddress = _netAddress;
+
+        return talons;
     }
 
     private WebSocketConnection wsc = null;
 
-    public WebSocketTalons(){
-    }
-
-    public WebSocketTalons(String netAddress){
+    private WebSocketTalons(String netAddress){
         wsc = new WebSocketConnection();
         try {
             wsc.connect("ws://" + netAddress, new WebSocketHandler() {
@@ -52,5 +58,19 @@ public class WebSocketTalons {
         } catch (WebSocketException e) {
             Log.d(this.getClass().getName(), e.getMessage().toString());
         }
+    }
+
+    public void setTextMessage(String message){
+        if (wsc.isConnected()){
+            try {
+                wsc.sendTextMessage(message);
+            } catch(Exception e){
+                //maybe have Exception
+            }
+        }
+    }
+
+    public void close(){
+        wsc.disconnect();
     }
 }

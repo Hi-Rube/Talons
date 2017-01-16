@@ -14,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
     private NetSettingDialog netSettingDialog = null;
 
     //设置的值
-    private String netAddress = null;
+    private String netSettingAddress = "30.34.202.141:8888";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent toDirectionController = new Intent(MainActivity.this, DirectionController.class);
                 Bundle params = new Bundle();
-                params.putString("netAddress", netAddress);
+                params.putString("netAddress", netSettingAddress);
                 toDirectionController.putExtra("params", params);
                 startActivity(toDirectionController);
             }
@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
                 netSettingDialog = new NetSettingDialog(this) {
                     @Override
                     public void onConfirmNetAddress(String _netAddress) {
-                        netAddress = _netAddress;
+                        netSettingAddress = _netAddress;
                     }
                 };
                 netSettingDialog.create();

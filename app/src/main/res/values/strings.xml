@@ -8,6 +8,6 @@
 
     <!-- menu 设置 -->
     <string name="action_net_setting">网络设置</string>
-    <string name="title_activity_direction_controller">DirectionController</string>
+    <string name="title_activity_direction_controller">方向盘</string>
 
 </resources>
