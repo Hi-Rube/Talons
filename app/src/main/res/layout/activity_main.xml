@@ -14,4 +14,13 @@
         android:layout_width="fill_parent"
         android:layout_height="60dp" />
 
+    <Button
+        android:layout_below="@id/btn_direction_controller_activity_main"
+        android:id="@+id/btn_goto_qr_activity_main"
+        android:text="扫码连接"
+        android:textColor="@color/base_text_color"
+        android:background="@color/base_color"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" />
+
 </RelativeLayout>

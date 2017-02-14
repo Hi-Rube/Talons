@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -15,6 +16,8 @@ public class MainActivity extends ActionBarActivity {
 
     //设置的值
     private String netSettingAddress = "30.34.202.141:8888";
+
+    public static int REQUEST_QR = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,15 @@ public class MainActivity extends ActionBarActivity {
                 params.putString("netAddress", netSettingAddress);
                 toDirectionController.putExtra("params", params);
                 startActivity(toDirectionController);
+            }
+        });
+
+        Button btnGotoQR = (Button) this.findViewById(R.id.btn_goto_qr_activity_main);
+        btnGotoQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toQr = new Intent(MainActivity.this, QRActivity.class);
+                startActivityForResult(toQr, REQUEST_QR);
             }
         });
     }
@@ -67,5 +79,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_QR && resultCode == RESULT_OK){
+            Toast.makeText(this, data.getStringExtra("return"), Toast.LENGTH_LONG).show();
+        }
     }
 }
